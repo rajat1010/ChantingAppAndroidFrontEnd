@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "111697933657",
+    "project_id": "ivcrapp"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111697933657:android:296b592591599525",
+        "android_client_info": {
+          "package_name": "com.service.iscon.vcr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "111697933657-7oo45jea5vgkrjkbb05ulkoj9obiep16.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.service.iscon.vcr",
+            "certificate_hash": "68DE1D6DDFE96FE084084431226300B12BF9722A"
+          }
+        },
+        {
+          "client_id": "111697933657-19dh36j445fsdvstgveph1k9gc4226dp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBA0l4bCAbthdXB2YS5iItJA14bgBeM408"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
