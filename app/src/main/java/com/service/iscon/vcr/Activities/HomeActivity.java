@@ -215,7 +215,7 @@ if(!date.equalsIgnoreCase(""))
 
                     UserInfo AuthenticatedUser = (UserInfo) Result;
                     Toast.makeText(HomeActivity.this, "Welcome :" + AuthenticatedUser.getDailyQuote().toString(), Toast.LENGTH_SHORT).show();
-                    Log.d("dates are not equal", "" + AuthenticatedUser.getDailyQuote().toString());
+                  //  Log.d("dates are not equal", "" + AuthenticatedUser.getDailyQuote().toString());
                     tv_todays_quote.setText("Quote of the Day \n" + AuthenticatedUser.getDailyQuote().toString());
 
                     showQuote(AuthenticatedUser);
