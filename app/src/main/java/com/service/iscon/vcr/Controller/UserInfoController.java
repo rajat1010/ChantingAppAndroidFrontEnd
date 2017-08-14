@@ -226,7 +226,7 @@ public class UserInfoController {
         HT.put("email", UI.getEmail());
         final String password=UI.getPassword();
         HT.put("password", password);
-
+        HT.put("isRegisteredViaGoogle","false");
         if (!TextUtils.isEmpty(UI.getMobile()))
             HT.put("mobile", UI.getMobile());
         if (!TextUtils.isEmpty(UI.getFullName()))
@@ -239,7 +239,7 @@ public class UserInfoController {
             @Override
             protected Object doInBackground(Object... params) {
                 String Response = NetUtils.PostWebServiceMethodforDotNet(Ctx, WebServiceConstants.UserRegister, json);
-
+//{"technicalStatus":"SUCCESS","responseCode":"2","tag":"registration","user":{"userId":null,"name":"Sushma","createdDate":"2017-08-13T19:55:43","lastLoginDate":null,"email":"sush@gmail.com","password":null,"mobile":"9049470990","isRegisteredViaGoogle":null,"googleAuthToken":null}}
                 // String Response2="{\"error\": {\"alert\": \"Enter Valid Mobile Number\"}}";
                 //String Response = "{\"error\":\"0\",\"user\": {\"name\": \"Shrinath Tamada\",\"email\": \"shri@gmail.com\",\"mobile\": \"9898989898\",\"last_login\": \"2015-09-17 13:26:16\"}}";
                 //String Response = "{\"technicalStatus\":\"SUCCESS\",\"responseCode\":\"0\",\"tag\":\"registration\",\"user\":{\"userId\":\"5\",\"name\":\""+UI.getFullName()+"\",\"createdDate\":\"2017-02-10T23:21:22\",\"lastLoginDate\":\"2017-02-12T13:26:16\",\"email\":\""+UI.getEmail()+"\",\"password\":null,\"mobile\":\""+UI.getMobile()+"\"}}";

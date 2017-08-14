@@ -99,6 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|start"
                 android:layout_margin="@dimen/profile_icon_margin"
+                android:visibility="gone"
                 app:srcCompat="@drawable/ic_place_black_24dp"
 
                 />
@@ -109,6 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|start"
                 android:hint="City"
+                android:visibility="gone"
                 android:maxLength="60"
                 android:maxLines="1"
                 />

@@ -203,9 +203,49 @@
     <TextView
         android:id="@+id/todays_quote"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:text=""
+        android:layout_marginTop="10dp"
         android:textColor="@color/colorWhite"
         android:textStyle="bold" />
+
+   <!-- <LinearLayout
+        android:id="@+id/ll_quote"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@color/yellow"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_height="wrap_content">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:padding="2dp"
+                android:background="#000000"
+                android:src="@drawable/ic_attach_file_black_24dp"/>
+
+            <TextView
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quote of a day : "
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+            <TextView
+                android:id="@+id/todays_quote"
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quote of a day "
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+    </LinearLayout>-->
 
 </LinearLayout>

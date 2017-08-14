@@ -1,9 +1,11 @@
 package com.service.iscon.vcr.Adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.service.iscon.vcr.Model.SessionModel;
@@ -18,21 +20,26 @@ import java.util.List;
 public class SessionHistoryAdapter  extends RecyclerView.Adapter<SessionHistoryAdapter.MyViewHolder> {
 
     private List<SessionModel> SessionList;
+    private Context mContext;
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, year, genre;
+        public TextView date, round, beads;
+        public ImageView icon;
 
         public MyViewHolder(View view) {
             super(view);
-            title = (TextView) view.findViewById(R.id.title);
-            genre = (TextView) view.findViewById(R.id.genre);
-            year = (TextView) view.findViewById(R.id.year);
+            //icon = (ImageView) view.findViewById(R.id.iv_icon);
+            date = (TextView) view.findViewById(R.id.tv_date);
+            round = (TextView) view.findViewById(R.id.tv_round);
+            beads = (TextView) view.findViewById(R.id.tv_beads);
         }
     }
 
 
-    public SessionHistoryAdapter(List<SessionModel> sList) {
+    public SessionHistoryAdapter(Context con, List<SessionModel> sList) {
         this.SessionList = sList;
+        this.mContext= con;
     }
 
     @Override
@@ -46,10 +53,26 @@ public class SessionHistoryAdapter  extends RecyclerView.Adapter<SessionHistoryA
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         SessionModel sessionModel = SessionList.get(position);
-        holder.title.setText("Date \n"+sessionModel.getDateInIST());
-        holder.title.setText("Date \n"+sessionModel.getDateInISTFormat2());
+        holder.date.setText(""+sessionModel.getDateInIST());
+        // holder.title.setText(""+sessionModel.getDateInISTFormat2());
 //        holder.genre.setText(sessionModel.getStartTimeInIST());
-        holder.year.setText("Total Beads \n"+String.valueOf(sessionModel.getBeads()));
+        holder.beads.setText("Beads: "+String.valueOf(sessionModel.getBeads()));
+        holder.round.setText("Rounds: "+String.valueOf(sessionModel.getBeads()/108));
+  /*      switch(position % 4){
+            case 0:holder.icon.setColorFilter(ContextCompat.getColor(mContext,R.color.colorAccent), android.graphics.PorterDuff.Mode.MULTIPLY);
+                break;
+            case 1:holder.icon.setColorFilter(ContextCompat.getColor(mContext,R.color.colorGray), android.graphics.PorterDuff.Mode.MULTIPLY);
+                break;
+            case 2: holder.icon.setColorFilter(ContextCompat.getColor(mContext,R.color.colorGreen), android.graphics.PorterDuff.Mode.MULTIPLY);
+                break;
+            case 3:  holder.icon.setColorFilter(ContextCompat.getColor(mContext,R.color.colorRed), android.graphics.PorterDuff.Mode.MULTIPLY);
+                break;
+            case 4: break;
+            case 5: break;
+            case 6: break;
+            case 7: break;
+        }*/
+
     }
 
     @Override

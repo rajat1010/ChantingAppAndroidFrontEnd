@@ -114,9 +114,10 @@ public class RegistrationActivity extends AppCompatActivity implements LoaderMan
             cancel = true;
         }
 
-
+        if(mobile.length() < 10 || mobile.length() > 10)
+        {
         // Check for a valid Mobile, if the user entered one.
-        if (!TextUtils.isEmpty(mobile) && !isMobileValid(mobile)) {
+       // if (!TextUtils.isEmpty(mobile) && !isMobileValid(mobile) ) {
             etMobile.setError(getString(R.string.error_invalid_name));
             focusView = etMobile;
             cancel = true;
@@ -153,6 +154,7 @@ public class RegistrationActivity extends AppCompatActivity implements LoaderMan
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
+            System.out.println("data from-----"+name+","+mobile+","+email+","+password);
             UserInfoController UIC = UserInfoController.RegisterUser(RegistrationActivity.this,new UserInfo(name,mobile,email,password));
             if (UIC == null) {
                 Log.e("Error", "UIC is null");

@@ -3,32 +3,25 @@ package com.service.iscon.vcr.Activities;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.AppCompatDrawableManager;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatDrawableManager;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -38,7 +31,6 @@ import android.widget.Toast;
 
 import com.codemybrainsout.ratingdialog.RatingDialog;
 import com.service.iscon.vcr.Controller.UserInfoController;
-import com.service.iscon.vcr.Fragments.HomeFragment;
 import com.service.iscon.vcr.Handler.MyDBHelper;
 import com.service.iscon.vcr.Helper.AsyncProcessListener;
 import com.service.iscon.vcr.Model.SessionModel;
@@ -48,10 +40,7 @@ import com.service.iscon.vcr.R;
 import com.service.iscon.vcr.Reminder.Notification_reciver;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
@@ -69,6 +58,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     String currentDate,date;
+   // LinearLayout ll_quote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,10 +81,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         tv_todays_round = (TextView) findViewById(R.id.todays_round);
         tv_todays_count = (TextView) findViewById(R.id.todays_count);
         ll_chanting = (LinearLayout) findViewById(R.id.ll_chanting);
+       // ll_quote= (LinearLayout) findViewById(R.id.ll_quote);
+     //   ll_quote.setVisibility(View.GONE);
         ll_chanting.setVisibility(View.GONE);
         imageViewProfile  = (ImageView) findViewById(R.id.imageView);
 //        Uri uri=Uri.parse(LoginActivity.ProfileImage);
-  //      imageViewProfile.setImageURI(uri);
+        //      imageViewProfile.setImageURI(uri);
         btn_start_finish_chant = (Button) findViewById(R.id.btn_start_finish_chant);
         btn_start_finish_chant.setOnClickListener(this);
         btn_add_count=(ImageView)findViewById(R.id.btn_add_count);
@@ -136,72 +128,34 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         getRefreshedData(true);
 
-       // UserInfo mUserInfo = db.getUserInfo();
+        // UserInfo mUserInfo = db.getUserInfo();
         //Daily quote
         Calendar c= Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         currentDate= df.format(c.getTime());
-      //  String currentDate= "31-7-2017";
+        //  String currentDate= "31-7-2017";
 
         Log.d("curr date",""+currentDate);
 
-         preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
         editor = preferences.edit();
 
         editor.putString("currentDate----", currentDate);
         String newdate=preferences.getString("newcompareDate","");
-if(newdate.equalsIgnoreCase("")) {
-    editor.putString("compareDate", compareDate);
-}else{
-    editor.putString("compareDate", newdate);
+        if(newdate.equalsIgnoreCase("")) {
+            editor.putString("compareDate", compareDate);
+        }else{
+            editor.putString("compareDate", newdate);
 
-}
+        }
 
         editor.apply();
 
 
-         date = preferences.getString("compareDate", "");
-          Log.d("comparedate-- date",""+date);
+        date = preferences.getString("compareDate", "");
+        Log.d("comparedate-- date",""+date);
 
-if(date.equalsIgnoreCase("")){
-    UserInfoController UIC = UserInfoController.GetDailyQuote(HomeActivity.this, mUserInfo);
-    if (UIC == null) {
-        Log.e("Error", "UIC is null");
-        return;
-    }
-    //Handling Response of service
-    UIC.setOnActivateDaily(new AsyncProcessListener<Object>() {
-        @Override
-        public void ProcessFinished(Object Result) {
-            // Toast.makeText(HomeActivity.this, Result.toString(), Toast.LENGTH_SHORT).show();
-
-            UserInfo AuthenticatedUser = (UserInfo) Result;
-            Toast.makeText(HomeActivity.this, "Welcome :" + AuthenticatedUser.getDailyQuote().toString(), Toast.LENGTH_SHORT).show();
-            Log.d("dates are not equal", "" + AuthenticatedUser.getDailyQuote().toString());
-            tv_todays_quote.setText("Quote of the Day \n" + AuthenticatedUser.getDailyQuote().toString());
-            compareDate=currentDate;
-            editor.putString("newcompareDate", compareDate);
-            editor.apply();
-            showQuote(AuthenticatedUser);
-
-        }
-
-        @Override
-        public void ProcessFailed(Exception E) {
-            String Resp = E.getMessage();
-            Toast.makeText(HomeActivity.this, Resp, Toast.LENGTH_SHORT).show();
-        }
-    });
-}
-if(!date.equalsIgnoreCase(""))
-        {
-               if(currentDate.equalsIgnoreCase(date)){
-            Log.d("both dates are equal","");
-            tv_todays_quote.setVisibility(View.GONE);
-
-
-        }
-        else if(!currentDate.equalsIgnoreCase(date)){
+        if(date.equalsIgnoreCase("")){
             UserInfoController UIC = UserInfoController.GetDailyQuote(HomeActivity.this, mUserInfo);
             if (UIC == null) {
                 Log.e("Error", "UIC is null");
@@ -215,9 +169,11 @@ if(!date.equalsIgnoreCase(""))
 
                     UserInfo AuthenticatedUser = (UserInfo) Result;
                     Toast.makeText(HomeActivity.this, "Welcome :" + AuthenticatedUser.getDailyQuote().toString(), Toast.LENGTH_SHORT).show();
-                  //  Log.d("dates are not equal", "" + AuthenticatedUser.getDailyQuote().toString());
+                    Log.d("dates are not equal", "" + AuthenticatedUser.getDailyQuote().toString());
                     tv_todays_quote.setText("Quote of the Day \n" + AuthenticatedUser.getDailyQuote().toString());
-
+                    compareDate=currentDate;
+                    editor.putString("newcompareDate", compareDate);
+                    editor.apply();
                     showQuote(AuthenticatedUser);
 
                 }
@@ -229,9 +185,43 @@ if(!date.equalsIgnoreCase(""))
                 }
             });
         }
+        if(!date.equalsIgnoreCase(""))
+        {
+            if(currentDate.equalsIgnoreCase(date)){
+                Log.d("both dates are equal","");
+                tv_todays_quote.setVisibility(View.GONE);
+            }
+            else if(!currentDate.equalsIgnoreCase(date)){
+                UserInfoController UIC = UserInfoController.GetDailyQuote(HomeActivity.this, mUserInfo);
+                if (UIC == null) {
+                    Log.e("Error", "UIC is null");
+                    return;
+                }
+                //Handling Response of service
+                UIC.setOnActivateDaily(new AsyncProcessListener<Object>() {
+                    @Override
+                    public void ProcessFinished(Object Result) {
+                        // Toast.makeText(HomeActivity.this, Result.toString(), Toast.LENGTH_SHORT).show();
+                        tv_todays_quote.setVisibility(View.VISIBLE);
+                        UserInfo AuthenticatedUser = (UserInfo) Result;
+                        Toast.makeText(HomeActivity.this, "Welcome :" + AuthenticatedUser.getDailyQuote().toString(), Toast.LENGTH_SHORT).show();
+                        Log.d("dates are not equal", "" + AuthenticatedUser.getDailyQuote().toString());
+                        tv_todays_quote.setText(AuthenticatedUser.getDailyQuote().toString());
+
+                        showQuote(AuthenticatedUser);
+
+                    }
+
+                    @Override
+                    public void ProcessFailed(Exception E) {
+                        String Resp = E.getMessage();
+                        Toast.makeText(HomeActivity.this, Resp, Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
 
         }
-        }
+    }
 
 
 
@@ -437,7 +427,7 @@ if(!date.equalsIgnoreCase(""))
     @Override
     public void onClick(View v) {
         tv_todays_quote.setVisibility(View.GONE);
-
+      //  ll_quote.setVisibility(View.GONE);
 
         if (v == btn_start_finish_chant) {
             MyDBHelper db = new MyDBHelper(HomeActivity.this);
@@ -466,7 +456,7 @@ if(!date.equalsIgnoreCase(""))
                 currentSession.setEndTime(sessiondate);
                 currentSession.setBeads(currentCount);
                 saveChantSession();
-              //  mPlayer.stop();
+                //  mPlayer.stop();
             }
         }else if(v==btn_add_count){
             currentCount++;

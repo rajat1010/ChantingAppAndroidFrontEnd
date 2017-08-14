@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_about"
     android:layout_width="match_parent"
@@ -10,11 +10,58 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.service.iscon.vcr.Activities.AboutActivity">
 
-  <!--  <com.github.barteksc.pdfviewer.PDFView
-        android:id="@+id/pdfView"
-        android:layout_below="@+id/tv_header"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>-->
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-</LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Why Chant Hare Krishna?"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/text_margin"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Significance and benefit of chanting the holy names of Krishna via the Maha-mantra, or great chant for deliverance :"
+                android:textColor="@color/title"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/hk_two" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Hare Krishna, Hare Krishna
+Krishna Krishna, Hare Hare
+Hare Rama Hare Rama
+Rama Rama, Hare Hare"
+                android:textColor="@color/title"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="According to Vedic literature and according to the personal testimony of realized souls, Krishna is the original person. And, as the original person, He is the origin of all of us. We, too, are by nature spiritual persons. Although we have physical bodies, our actual nature is spiritual.
+We're spiritual and Krishna is spiritual, but the difference is that Krishna is great, and we are small. Because we're both spiritual, we can have a relationship with each other but because He's great He's the origin and we're small. The relationship is that we're dependent on Him.
+Now, to actually get in touch with Krishna, we need a method. Krishna is everywhere, but still we need a method. And the method is to chant the holy names. Because Krishna is absolute, His name is identical with Him, and when we chant His name, we associate with Him. We can actually feel it. We can experience it.
+Any ordinary, mundane sound becomes boring after a while. It becomes disgusting after a while. If you had to repeat, &quot; one, two, three, one, two, three. . .&quot; it would become disgusting. But if you keep chanting &quot;Krishna Krishna, Hare Krishna, Hare Krishna, Krishna Krishna, Hare Hare/ Hare Rama, Hare Rama, Rama Rama, Hare Hare,&quot; it's ever-fresh. You want to chant more and more. And you never grow tired of it.
+        The chanting of the holy names is the most important and the most essential according to Bhakti Tradition. And if one chants the holy name in the proper way and in the proper mood—with attention, like any other type of meditation—one will develop self-realization and God realization. One will actually have direct perception of one's self within, and direct perception of God. So please chant Hare Krishna Mahamantra and be happy."
+                android:textColor="@color/year"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

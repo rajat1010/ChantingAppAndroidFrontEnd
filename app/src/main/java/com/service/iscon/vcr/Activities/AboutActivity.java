@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
+import android.widget.EditText;
+import android.widget.TextView;
 
 
 import com.service.iscon.vcr.R;
@@ -15,6 +18,10 @@ public class AboutActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+       // EditText ed_chant;
+        TextView txt_chant;
+
+       // String text = "LargeText";
 
 
     }

@@ -111,6 +111,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:mrl_rippleAlpha="0.1"
+                android:visibility="gone"
                 app:mrl_rippleDuration="50"
                 app:mrl_rippleHover="true"
                 app:mrl_rippleOverlay="true">
@@ -120,6 +121,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
+                    android:visibility="gone"
+
                     android:layout_marginBottom="10dp"
                     android:text="Sign in with Google"
                     android:textAlignment="center"

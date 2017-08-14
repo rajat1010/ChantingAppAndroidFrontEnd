@@ -77,14 +77,15 @@ public class UserInfo implements Serializable {
         IsActive = isActive;
     }
 
-    public String getLastLogin() {
-        return LastLogin;
-    }
+
 
     public void setLastLogin(String lastLogin) {
         LastLogin = lastLogin;
     }
+    public String getLastLogin() {
 
+        return LastLogin;
+    }
     public String getCreatedDate() {
         return CreatedDate;
     }
