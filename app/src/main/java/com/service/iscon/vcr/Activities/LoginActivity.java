@@ -56,20 +56,20 @@ import com.service.iscon.vcr.googleSignIn.GoogleResponseListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import hp.harsh.library.interfaces.PermissionInterface;
+/*import hp.harsh.library.interfaces.PermissionInterface;
 import hp.harsh.library.manager.PermissionRequest;
 import hp.harsh.library.manager.PermissionResponse;
 import hp.harsh.library.utilbag.Permission;
-import hp.harsh.library.utilbag.PermissionCode;
+import hp.harsh.library.utilbag.PermissionCode;*/
 
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor>,
+public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor>/*,
         GoogleApiClient.OnConnectionFailedListener,
-        GoogleResponseListener, PermissionInterface {
+        GoogleResponseListener, PermissionInterface*/ {
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -95,9 +95,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private String UseraccFacebookId, UseraccGooglePlusId, UseraccLinkedinId, UseraccTwitterId;
     public static String ProfileImage;
 
-    com.k2infosoft.social_login.GooglePlusButton _google_plus;
+    //com.k2infosoft.social_login.GooglePlusButton _google_plus;
 
-    public static GooglePlusSignInHelper mGHelper;
+    //public static GooglePlusSignInHelper mGHelper;
 
     // UI references.
     private AutoCompleteTextView mEmailView;
@@ -128,13 +128,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             // Build a GoogleApiClient with access to the Google Sign-In API and the
 // options specified by gso.
-            mGoogleApiClient = new GoogleApiClient.Builder(this)
-                    .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
+            /*mGoogleApiClient = new GoogleApiClient.Builder(this)
+                    .enableAutoManage(this *//* FragmentActivity *//*, this *//* OnConnectionFailedListener *//*)
                     .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                    .build();
+                    .build();*/
 
 
-            mGHelper = new GooglePlusSignInHelper(this, this);
+            /*mGHelper = new GooglePlusSignInHelper(this, this);
 
             _google_plus = (com.k2infosoft.social_login.GooglePlusButton) findViewById(R.id.btn_google_plus);
 
@@ -148,7 +148,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             if (Build.VERSION.SDK_INT >= 23) {
                 checkPhoneStatePermission();
-            }
+            }*/
 
             // Set Image
             Drawable drawable = AppCompatDrawableManager.get().getDrawable(getApplicationContext(), R.drawable.ic_filter_vintage_black_24dp);
@@ -417,24 +417,25 @@ System.out.println("password :"+password);
         mEmailView.setAdapter(adapter);
     }
 
-    @Override
+    /*@Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Toast.makeText(this, "Google Client Connection Failed", Toast.LENGTH_SHORT).show();
-    }
+    }*/
 
     private void checkPhoneStatePermission() {
-        new PermissionRequest(LoginActivity.this,
+        /*new PermissionRequest(LoginActivity.this,
                 Permission.PERMISSION_READ_PHONE_STATE,
                 PermissionCode.CODE_PERMISSION_READ_PHONE_STATE,
                 R.string.permission_phone_state_rationale,
                 R.string.permission_phone_state_denied,
                 R.string.permission_enable_message, this)
-                .checkPermission();
+                .checkPermission();*/
     }
 
-    @Override
+    /*@Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+*//*
         switch (requestCode) {
 
             case PermissionCode.CODE_PERMISSION_READ_PHONE_STATE:
@@ -454,6 +455,7 @@ System.out.println("password :"+password);
 
         } else {
         }
+*//*
         return;
     }
 
@@ -461,19 +463,19 @@ System.out.println("password :"+password);
     @SuppressLint("HardwareIds")
     @Override
     public void onGranted(PermissionResponse permissionResponse) {
-        switch (permissionResponse.type) {
+        *//*switch (permissionResponse.type) {
             case PermissionCode.CODE_PERMISSION_READ_PHONE_STATE:
                 break;
-        }
+        }*//*
 
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(mGHelper!= null){
+        *//*if(mGHelper!= null){
             mGHelper.disconnectApiClient();
-        }
+        }*//*
     }
 
     @Override
@@ -492,7 +494,7 @@ System.out.println("password :"+password);
         String userLoginId = person.getId();
         ProfileImage = person.getImage().getUrl();
         Toast.makeText(this, "Google sign in success."+Useraccname+" "+UseraccProfilepic, Toast.LENGTH_SHORT).show();
-        /*UserInfo AuthenticatedUser = new UserInfo(000, Useraccname, person.getId(), "00000");
+        *//*UserInfo AuthenticatedUser = new UserInfo(000, Useraccname, person.getId(), "00000");
         MyDBHelper db = new MyDBHelper(LoginActivity.this);
         db.clearUser();
         db.addUser(AuthenticatedUser);
@@ -502,8 +504,8 @@ System.out.println("password :"+password);
         List<UserInfo> listUsers = new ArrayList();
         listUsers = db.getAllContacts();
         showProgress(false);
-        finish();*/
-    }
+        finish();*//*
+    }*/
 
     private interface ProfileQuery {
         String[] PROJECTION = {
@@ -584,7 +586,7 @@ System.out.println("password :"+password);
         super.onActivityResult(requestCode, resultCode, data);
         //handle results
 
-        mGHelper.onActivityResult(requestCode, resultCode, data);
+        //mGHelper.onActivityResult(requestCode, resultCode, data);
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         /*if (requestCode == RC_SIGN_IN) {

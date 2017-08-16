@@ -116,7 +116,7 @@
                 app:mrl_rippleHover="true"
                 app:mrl_rippleOverlay="true">
 
-                <com.k2infosoft.social_login.GooglePlusButton
+                <!--<com.k2infosoft.social_login.GooglePlusButton
                     android:id="@+id/btn_google_plus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -130,7 +130,7 @@
                     app:iconSize="@dimen/iconsize"
                     app:roundedCorner="true"
                     tools:ignore="HardcodedText" />
-
+-->
             </com.balysv.materialripple.MaterialRippleLayout>
 
             <TextView

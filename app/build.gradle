@@ -3,10 +3,10 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         config {
-            keyAlias 'aliasivcr'
-            keyPassword 'priyanka'
-            storeFile file('F:\\2. SuSh\\VCRMAIN\\KeyStore/ivcrkeysotre.jks')
-            storePassword 'priyanka'
+            keyAlias 'ivcr'
+            keyPassword 'harekrishna'
+            storeFile file('F:\\2. SuSh\\VCRMAIN\\KEYPrayTM/ivcr.jks')
+            storePassword 'harekrishna'
         }
     }
     compileSdkVersion 24
@@ -14,10 +14,10 @@ android {
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "com.service.iscon.vcr"
-        minSdkVersion 19
+        minSdkVersion 15
         targetSdkVersion 24
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled = true
@@ -53,19 +53,17 @@ dependencies {
     compile 'com.android.support:support-v4:24.2.1'
     compile 'com.android.support:support-vector-drawable:24.2.1'
     compile 'com.google.android.gms:play-services-auth:10.0.1'
-    compile "com.android.support:recyclerview-v7:24.1.1"
-    compile 'org.apache.httpcomponents:httpcore:4.4.1'
-    compile 'org.apache.httpcomponents:httpclient:4.5'
+    compile 'com.android.support:recyclerview-v7:24.1.1'
+   // compile 'org.apache.httpcomponents:httpcore:4.4.1'
+   // compile 'org.apache.httpcomponents:httpclient:4.5'
     // new added prathmesh
     compile 'com.codemybrainsout.rating:ratingdialog:1.0.2'
-    compile(name: 'easysocial-release', ext: 'aar')
-    compile(name: 'social-login-release', ext: 'aar')
-    compile(name: 'library-release', ext: 'aar')
+    //compile(name: 'easysocial-release', ext: 'aar')
+    //compile(name: 'social-login-release', ext: 'aar')
+    //compile(name: 'library-release', ext: 'aar')
     compile 'com.balysv:material-ripple:1.0.2'
-    compile "com.google.android.gms:play-services-plus:10.0.1"
-
+    compile 'com.google.android.gms:play-services-plus:10.0.1'
     //compile 'com.github.barteksc:android-pdf-viewer:2.0.3'
-
     testCompile 'junit:junit:4.12'
 }
 apply plugin: 'com.google.gms.google-services'
